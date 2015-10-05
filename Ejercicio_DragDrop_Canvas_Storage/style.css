@@ -50,3 +50,13 @@ label {
     margin: 10px;
     padding: 5px;
 }
+
+#myCanvas {
+    display: block;
+}
+#btnActualizar {
+    display: block;
+    float: right;
+    margin: 20px 0;
+    padding: 5px;
+}

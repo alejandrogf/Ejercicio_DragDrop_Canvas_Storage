@@ -10,13 +10,14 @@
 
     <div id="izquierdo">
         <label for="color">Elige un color</label>
-        <select id="color_id">
-            <option value="#FFADD8E6" style="background: lightblue">Azul</option>
-            <option value="#FF90EE90" style="background: lightgreen">Verde</option>
-            <option value="#FF778899" style="background: lightslategray">Gris</option>
-            <option value="#FFBC8F8F" style="background: rosybrown">Rosa</option>
-            <option value="#FFFFD70" style="background: gold">Dorado</option>
-            <option value="#FFFFA50" style="background: orange">Naranja</option>
+        <select id="color_id" onchange="obtenerColor(this)" autofocus="autofocus">
+            <option value="#FFFFFF" style="background: white" selected="selected">Blanco</option>
+            <option value="#0000FF" style="background: blue">Azul</option>
+            <option value="#008000" style="background: green">Verde</option>
+            <option value="#808080" style="background: grey">Gris</option>
+            <option value="#FFFF00" style="background: yellow">Amarillo</option>
+            <option value="#FF0000" style="background: red">Rojo</option>
+            <option value="#FFA500" style="background: orange">Naranja</option>
         </select>
 
         <label for="txtPosX">Posición X</label>
@@ -37,10 +38,10 @@
 
     <div id="derecho">
         <canvas id="myCanvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
-
+        <input type="button" id="btnActualizar" value="Actualizar BBDD"/>
     </div>
 
 
-    <script src="motorjs_registroClase.js"></script>
+    <script src="motor_registroClase.js"></script>
 </body>
 </html>

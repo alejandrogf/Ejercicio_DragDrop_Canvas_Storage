@@ -1,11 +1,8 @@
 ﻿document.getElementById("btnAcceder").addEventListener("click", login);
 
-
-
-if (sessionStorage.getItem("nombre")) {
+if (localStorage.getItem("nombre")) {
     location.replace("registroClase.html");
 }
-
 
 function login() {
     if (document.getElementById("txtNombre").value == "") {
@@ -13,8 +10,27 @@ function login() {
         $("#txtNombre").val("");
         return;
     }
-    sessionStorage.setItem("nombreAcceso", document.getElementById("txtNombre").value);
+    localStorage.setItem("nombreAcceso", $("#txtNombre").val());
     location.replace("registroClase.html");
 
 }
+
+$(document).ready(function() {
+
+    greet();
+
+});
+
+
+
+function greet(){
+    name = localStorage.getItem("nombreAcceso");
+    if (name == null || name == "null"){
+        $("#txtNombreLabel").html("Hola, desconocido, ¿Cuál es tu nombre?");
+    } else {
+        $("#txtNombreLabel").html("Hola amigo!");
+        $("#txtNombre").val(name);
+    } 
+} 
+
 
