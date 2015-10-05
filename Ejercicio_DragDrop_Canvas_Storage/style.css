@@ -1,0 +1,52 @@
+﻿body {
+}
+
+#registro {
+        display: inline;
+    float: left;
+    background-color: seagreen;
+    min-height: 20px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+
+#izquierdo {
+    display: inline;
+    float: left;
+    background-color: grey;
+    min-height: 175px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+
+#derecho {
+    display: inline;
+    float: left;
+    background-color: slateblue;
+    min-height: 20px;
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+    margin: 5px;
+}
+
+#izquierdo input {
+    display: block;
+        margin: 10px;
+    padding: 5px;
+}
+
+#izquierdo select {
+    display: block;
+        margin: 10px;
+    padding: 5px;
+}
+
+label {
+    margin: 10px;
+    padding: 5px;
+}

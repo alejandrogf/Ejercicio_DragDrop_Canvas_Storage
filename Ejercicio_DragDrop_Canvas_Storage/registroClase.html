@@ -1,0 +1,46 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="style.css" rel="stylesheet" />
+    <script src="Scripts/jquery-2.1.4.min.js"></script>
+</head>
+<body>
+
+    <div id="izquierdo">
+        <label for="color">Elige un color</label>
+        <select id="color_id">
+            <option value="#FFADD8E6" style="background: lightblue">Azul</option>
+            <option value="#FF90EE90" style="background: lightgreen">Verde</option>
+            <option value="#FF778899" style="background: lightslategray">Gris</option>
+            <option value="#FFBC8F8F" style="background: rosybrown">Rosa</option>
+            <option value="#FFFFD70" style="background: gold">Dorado</option>
+            <option value="#FFFFA50" style="background: orange">Naranja</option>
+        </select>
+
+        <label for="txtPosX">Posición X</label>
+        <input type="text" id="txtPosX" placeholder="Escribe aquí" />
+
+        <label for="txtPosY">Posición Y</label>
+        <input type="text" id="txtPosY" placeholder="Escribe aquí" />
+
+        <label for="txtAlto">Alto</label>
+        <input type="text" id="txtAlto" placeholder="Escribe aquí" />
+
+        <label for="txtAncho">Ancho</label>
+        <input type="text" id="txtAncho" placeholder="Escribe aquí" />
+
+        <input type="button" id="btnRegistrar" value="Registrar" />
+
+    </div>
+
+    <div id="derecho">
+        <canvas id="myCanvas" width="500" height="500" style="border: 1px solid #000000;"></canvas>
+
+    </div>
+
+
+    <script src="motorjs_registroClase.js"></script>
+</body>
+</html>
