@@ -6,12 +6,13 @@ var color = undefined;
 var url = "https://alumnoscurso.azure-mobile.net/Tables/clase09";
 
 // Object model
-function mesa(posx, posy, alto, ancho, color) {
+function mesa(posx, posy, alto, ancho, color, nombre) {
     this.posx = posx;
     this.posy = posy;
     this.alto = alto;
     this.ancho = ancho;
     this.color = color;
+    this.nombre = nombre;
 }
 
 function obtenerColor(s) {
@@ -20,58 +21,49 @@ function obtenerColor(s) {
 
 function dibujarMesa() {
     var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
+        var ctx = canvas.getContext("2d");
 
-    //Color
-    //Si no se ha seleccionado color, por defecto será blanco
-    if (!color) {
-        ctx.fillStyle = "#FFFFFF";
-    } else {
-        ctx.fillStyle = color;
-    };
-    
-    //Posicion
-    ctx.fillRect($("#txtPosX").val(), $("#txtPosY").val(), $("#txtAlto").val(), $("#txtAncho").val());
+        //Color
+        //Si no se ha seleccionado color, por defecto será blanco
+        if (!color) {
+            ctx.fillStyle = "#FFFFFF";
+        } else {
+            ctx.fillStyle = color;
+        };
 
-    //Almaceno los datos en local
-    almacenarDatosLocal();
-
-    //borro los datos del formulario
-    limpiarDatos();
+        //Posicion
+        ctx.fillRect($("#txtPosX").val(), $("#txtPosY").val(), $("#txtAlto").val(), $("#txtAncho").val());
+        //Almaceno los datos en local
+        almacenarDatosLocal();
+        //borro los datos del formulario
+        $("#txtPosX").val("");
+        $("#txtPosY").val("");
+        $("#txtAlto").val("");
+        $("#txtAncho").val("");
 };
-
-function limpiarDatos() {
-    $("#txtPosX").val("");
-    $("#txtPosY").val("");
-    $("#txtAlto").val("");
-    $("#txtAncho").val("");
-}
 
 function actualizarBBDD() {
     var contadorMesa = localStorage.getItem('contadorMesa');
-    for (i = 1; i <= contadorMesa; i++) {
-        //var number = parseInt(i) + 1;
+    for (var i = 1; i <= contadorMesa; i++) {
+   
         var mesa = jQuery.parseJSON(localStorage.getItem("Mesa_" + i));
 
         $.ajax({
-            method: "post",
+            method: "POST",
             url: url,
-            success: function(res) {
-                console.log(res);
+            success: function() {
+                alert("Guardado!!");
             },
-            error: function(err) {
-                console.log(err);
+            error: function() {
+                alert("Error!!");
             },
-            data: mesa,
+            data: JSON.stringify(mesa),
             dataType: "json",
             headers: {
                 "Content-Type": "application/json"
             }
         });
-
-
     }
-
 }
 
 function almacenarDatosLocal() {
@@ -82,7 +74,8 @@ function almacenarDatosLocal() {
         $("#txtPosY").val(),
         $("#txtAlto").val(),
         $("#txtAncho").val(),
-        color);
+        color,
+        localStorage.getItem("nombreAcceso"));
 
         if (localStorage.contadorMesa == undefined) {
             localStorage.setItem("contadorMesa", 0);
@@ -101,18 +94,14 @@ function commitToStorage(contadorMesa, nuevaMesa) {
     localStorage.setItem(key, JSON.stringify(nuevaMesa));
 }
 
-
-
-
 $(document).ready(function () {
     
     $("#btnRegistrar").click(dibujarMesa);
     $("#btnActualizar").click(actualizarBBDD);
 
-
     var contadorMesa = localStorage.getItem('contadorMesa');
-    for (i = 1; i <= contadorMesa; i++) {
-        //var number = parseInt(i) + 1;
+    for (var i = 1; i <= contadorMesa; i++) {
+        
         var mesa = jQuery.parseJSON(localStorage.getItem("Mesa_" + i));
         recuperarMesa(mesa); 
     }
